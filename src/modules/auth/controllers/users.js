@@ -1,4 +1,4 @@
-import { Users } from '../../../schema/db';
+import { Users } from '../models';
 import bcrypt from 'bcryptjs';
 
 /*
