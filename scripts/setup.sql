@@ -1,0 +1,6 @@
+CREATE USER 'myapi'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'myapi'@'localhost';
+
+CREATE DATABASE IF NOT EXISTS myapi_dev;
+CREATE DATABASE IF NOT EXISTS myapi_test;
+CREATE DATABASE IF NOT EXISTS myapi_prod;
