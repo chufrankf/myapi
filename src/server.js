@@ -4,19 +4,35 @@ import { ApolloServer } from 'apollo-server-express';
 import { schema } from './schema/graphql';
 import models from './schema/db';
 import configurePassport from './setup/passport'; 
+import exphbs from 'express-handlebars';
+import path from 'path';
 
-//Initialize Variables
 const app = express();
-
-//Initialize Passport
 configurePassport(app);
+
+// Handlebars
+app.use(express.static('./public'));
+app.set('views', path.join(__dirname, 'views'));
+
+var hbs = exphbs.create({
+  defaultLayout: 'main',
+  layoutsDir: path.join(__dirname, 'views/layouts/'),
+  partialsDir: path.join(__dirname, 'views/partials/')
+});
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+// Routers
+app.get('/', (req, res) => res.render('home') );
+app.get('/login', (req, res) => res.render('login') );
 
 // GraphQL
 console.info('SETUP - GraphQL...');
 const server = new ApolloServer({ schema: schema });
 server.applyMiddleware({ app });
 
-// Sync Sequelize and start service
+// Sync Sequelize
 console.info('SETUP - Syncing database tables...');
 models.sequelize.sync({})
   .then(() => {
