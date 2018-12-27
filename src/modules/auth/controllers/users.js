@@ -30,7 +30,7 @@ function findOne(email, callback) {
  * req: details of the request to pass on
  * callback: params {error, user}
  */
-function signIn(req, email, password, callback) {
+function signIn(email, password, callback) {
   findOne(email, (error, user) => {
     if (user && !error) {
       if ( bcrypt.compareSync(password, user.password) ) {
