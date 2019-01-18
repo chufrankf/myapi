@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon --inspect src/server.js --exec babel-node",
+    "start": "nodemon --inspect src/server.js --exec babel-node",
     "build": "babel src -d dist",
     "serve": "node dist/src.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,13 +20,18 @@
   "dependencies": {
     "apollo-server-express": "^2.0.4",
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^6.1.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "graphql": "^14.0.2",
     "graphql-tools": "^4.0.3",
+    "jsonwebtoken": "^8.4.0",
     "mysql2": "^1.6.4",
     "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "sequelize": "^4.41.2"
   }

@@ -17,6 +17,12 @@
         "--exec", 
         "babel-node"
       ]
+    },
+    {
+      "name": "Attach to Inspect Port",
+      "type": "node",
+      "request": "attach",
+      "port": 9229
     }
   ]
 }
